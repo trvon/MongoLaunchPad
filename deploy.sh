@@ -25,8 +25,15 @@ function setup {
 
 function start {
 	# Starts mongodb and forks it to the background
-	mongod admin --quiet --port $port --bind_ip 127.0.0.1 &
-	cd app/$name &&	npm install && npm start 
+	# Starting DB
+	# if [ -f /var/lib/mongodb/mongod.lock ]; then
+	# 	  udo rm /var/lib/mongodb/mongod.lock
+	# fi
+	mongod --dbpath data/db --port $port &
+	#echo -e "You can find the project at\n localhost:$port\n"
+	# Sleep 15 seconds so you know what port webhost is located on
+	sleep 15
+	cd app/$name &&	npm install && npm start
 }
 
 function getApi {
@@ -34,7 +41,7 @@ function getApi {
  		echo "Are you sure you want to overrite this API? ( y | n)"
  		read y
  		if [ "${y,,}" == 'y' ]; then
- 			rm -fr app/$name
+ 			rm -fr app/$namev
  			git clone $url app/$name --quiet
  		fi
  	else
@@ -68,7 +75,7 @@ function setApi {
 
 case $option in 
 	"start") start ;;
-	"set") setApi ;;
+	"use") setApi ;;
 	"get") getApi ;;
 	# As of now requires 
 	"stop") stopApi ;; 
