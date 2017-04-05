@@ -25,8 +25,8 @@ function setup {
 
 function start {
 	# Starts mongodb and forks it to the background
+	mongod admin --quiet --port $port --bind_ip 127.0.0.1 &
 	cd app/$name &&	npm install && npm start 
-	mongodb app.js --quiet --port $port --host mongodb://localhost:$port &
 }
 
 function getApi {
