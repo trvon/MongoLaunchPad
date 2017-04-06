@@ -1,5 +1,5 @@
 # !/bin/bash
-
+# 
 # man page 
 # creation http://www.linuxhowtos.org/System/creatingman.htm
 
@@ -31,7 +31,7 @@ function start {
 	# fi
 	mongod --dbpath data/db --port $port &
 	#echo -e "You can find the project at\n localhost:$port\n"
-	# Sleep 15 seconds so you know what port webhost is located on
+	# So you know what port webhost is located on
 	sleep 15
 	cd app/$name &&	npm install && npm start
 }
