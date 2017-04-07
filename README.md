@@ -1,6 +1,3 @@
-### This page represents the man page for this script
-
-
 DEPLOY
 
 
