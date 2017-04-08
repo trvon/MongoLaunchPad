@@ -10,6 +10,7 @@ SYNOPSIS
 
 
 DESCRIPTION
+
 		Disclaimer - This script is tested on Linux Platforms and utitlizes
 		bash.
 
@@ -24,6 +25,7 @@ DESCRIPTION
 		folder and an data/db folder path
 
 OPTIONS
+
 		get		downloads a git repository into the app folder and then 
 				aunches the app as 
 				well as it launches a mongo databse. 
