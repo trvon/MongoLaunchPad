@@ -1,7 +1,7 @@
 # !/bin/bash
 # 
 # man page 
-# creation http://www.linuxhowtos.org/System/creatingman.htm
+# creation http://www.linuxhowtos.org/SystPem/creatingman.htm
 # 
 # Login in scheme
 # curl -H "Content-Type: application/json" -X POST -d '{"username":"xyz","password":"xyz"}' http://localhost:3000/api/login
