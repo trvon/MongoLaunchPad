@@ -34,10 +34,10 @@ function start {
 	# Starts mongodb and forks it to the background
 	# Starting DB
 	# rm data/db/*.lock
-	mongod --dbpath data/db --port $port &
+	mongod --dbpath data/db --port $port --quiet  &
 	echo -e "\n\nYou can find the project at\n localhost:$port\n\n"
 	# So you know what port webhost is located on
-	cd app/$name &&	npm install --silent && npm start &
+	cd app/$name &&	npm install && npm start
 }
 
 function getApi {
