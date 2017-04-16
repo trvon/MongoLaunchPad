@@ -2,9 +2,12 @@
  
 # man page 
 # creation http://www.linuxhowtos.org/SystPem/creatingman.htm
-# 
+ 
 # Login in scheme
 # curl -H "Content-Type: application/json" -X POST -d '{"username":"xyz","password":"xyz"}' http://localhost:3000/api/login
+
+# Certifcation resource
+# https://docs.mongodb.com/manual/tutorial/configure-ssl/
 
 url=$2
 name="${2##*/}"
@@ -27,14 +30,32 @@ function setup {
 	port=$RANDOM
 	# If secret is generated before, we need to store for creation of 
 	# new file
-	echo -e "{\n\t\"mongoConnection\": \"mongodb://localhost:$port/\"\n}" > app/$name/bin/config.json
+	echo -e "{\n\t\"mongoConnection\": \"mongodb://localhost:$port/test?ssl-true\"\n}" > app/$name/bin/config.json
+}
+
+function genKey {
+    # Checking if openssl is installed
+    which openssl > /dev/null
+    if [ $? -ne 0  ]; then
+        sudo apt-get install openssl
+    fi
+    
+    # Generating certificate and key
+    if [ ! -f certs/mongodb-cert.crt ]; then
+        if [ -d certs ]; then
+            mkdir certs
+        fi
+        openssl req -newkey rsa:4096 -new -x509 -days 60 -nodes -out certs/mongodb-cert.crt -keyout certs/mongodb-cert.key
+        cat certs/mongodv-cert.crt certs/mongodb-certs.key > certs/mongodb.pem
+    fi
 }
 
 function start {
 	# Starts mongodb and forks it to the background
 	# Starting DB
 	# rm data/db/*.lock
-	mongod --dbpath data/db --port $port --quiet  &
+	genKey
+    mongod --sslMode requireSSL --sslPEMKeyFile mongodb.pem --dbpath data/db --port $port --quiet &
 	echo -e "\n\nYou can find the project at\n localhost:$port\n\n"
 	# So you know what port webhost is located on
 	cd app/$name &&	npm install && npm start
@@ -84,3 +105,4 @@ case $option in
 	"stop") stopApi ;; 
 	*) echo -e "Sorry that is not an option, please refer to the man page\n'man deploy'"
 esac
+
