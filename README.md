@@ -1,6 +1,3 @@
-Currently is not working due to mongodb trying to connect ssl in script. If you would like to have the script
-work without mongodb establishing a SSL connection, simply edit the deploy script. 
-
 
 DEPLOY
 
