@@ -42,7 +42,7 @@ function genKey {
     
     # Generating certificate and key
     if [ ! -f certs/mongodb.pem ]; then
-        if [ -d certs ]; then
+        if [ ! -d certs ]; then
             mkdir certs
         fi
         openssl req -newkey rsa:4096 -new -x509 -days 60 -nodes -out certs/mongodb-cert.crt -keyout certs/mongodb-cert.key && cd certs
