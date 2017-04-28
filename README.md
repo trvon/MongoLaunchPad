@@ -30,10 +30,10 @@ DESCRIPTION
 OPTIONS
 
 	get		downloads a git repository into the app folder in side of the
-				specified project directory. 
+			specified project directory. 
 
 	set 	Depending on project specified, the user sets the project
-				directory that they wold like to launch from. 
+			directory that they wold like to launch from. 
 
 	start
 
@@ -44,23 +44,23 @@ OPTIONS
 
 	stop
 
-		stop-all: 		Stops the  database and node server. Make sure you want to do
-						this because the port is going to be randommized when started 
-						again
+		stop-all: 		Stops the  database and node server. Make sure you 
+						want to do this because the port is going to be 
+						randommized when started again
 		stop-ui:
 		stop-api:
 		stop-db:
         
     update
 
-       	update:  		Pulls from all the current git repositories located in the 
-                		app directories.
+       	update:  		Pulls from all the current git repositories located 
+       					in the app directories.
 
        	update [url]: 	Updates a specific repository in the project directory
 
        	update-current: Updates the selected projects
 
-Project
+PROJECT
 
 	UI 		This directory is for the front end development.
 	API 	This directory is for the back end development
