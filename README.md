@@ -1,13 +1,15 @@
+LaunchPad
 
-DEPLOY
+*Disclaimer*
 
+Some commands may or may not work until everything is sufficently tested
 
-NAME
-		Deploy's mongodb hosted on node server
+NAME"
+		A deployment console for mongoDB and node projects
 
 
 SYNOPSIS
-		deploy [option] [url]
+		deploy [option] [project] [URL]
 
 
 DESCRIPTION
@@ -27,15 +29,42 @@ DESCRIPTION
 
 OPTIONS
 
-		get		downloads a git repository into the app folder and then 
-				aunches the app as 
-				well as it launches a mongo databse. 
+	get		downloads a git repository into the app folder in side of the
+				specified project directory. 
 
-		use 	uses a current directory to launch an api from. Users can
-				either use an URL to
-				the directory or they can use the basename of the folder. 
-				*important* Case matters
+	set 	Depending on project specified, the user sets the project
+				directory that they wold like to launch from. 
 
-		stop	Stops the  database and node server. Make sure you want to do
-				this because the port is going to be randommized when started 
-				again
+	start
+
+		start-all:
+		start-ui:
+		start-api:
+		start-db:
+
+	stop
+
+		stop-all: 		Stops the  database and node server. Make sure you want to do
+						this because the port is going to be randommized when started 
+						again
+		stop-ui:
+		stop-api:
+		stop-db:
+        
+    update
+
+       	update:  		Pulls from all the current git repositories located in the 
+                		app directories.
+
+       	update [url]: 	Updates a specific repository in the project directory
+
+       	update-current: Updates the selected projects
+
+Project
+
+	UI 		This directory is for the front end development.
+	API 	This directory is for the back end development
+
+URL
+		As of now, the url supports git repositories, but I will be working
+		to support different version control systems. 
