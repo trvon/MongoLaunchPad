@@ -53,7 +53,7 @@ OPTIONS
         
     update
 
-       	update:  		Pulls from all the current git repositories located 
+       	update:			Pulls from all the current git repositories located 
        					in the app directories.
 
        	update [url]: 	Updates a specific repository in the project directory
