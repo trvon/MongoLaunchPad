@@ -1,14 +1,15 @@
 LaunchPad
 
 *Disclaimer*
-
 Some commands may or may not work until everything is sufficently tested
 
 NAME"
+
 		A deployment console for mongoDB and node projects
 
 
 SYNOPSIS
+
 		deploy [option] [project] [URL]
 
 
@@ -29,37 +30,35 @@ DESCRIPTION
 
 OPTIONS
 
-	get		downloads a git repository into the app folder in side of the
-			specified project directory. 
+	get			downloads a git repository into the app folder in side 
+				of the specified project directory. 
 
-	set 	Depending on project specified, the user sets the project
-			directory that they wold like to launch from. 
+	setrepo		Depending on project specified, the user sets the project
+				directory that they wold like to launch from. 
 
-	start
+	start [option]
 
-		start-all:
-		start-ui:
-		start-api:
-		start-db:
+		all:
+		ui:
+		api:
+		db:
 
-	stop
+	stop [option]
 
-		stop-all: 		Stops the  database and node server. Make sure you 
-						want to do this because the port is going to be 
-						randommized when started again
-		stop-ui:
-		stop-api:
-		stop-db:
+		all: 	Stops the  database and node server. Make sure you 
+				want to do this because the port is going to be 
+				randommized when started again
+		ui:
+		api:
+		db:
         
-    update 
+    update [option]
     
 
-       	update:			Pulls from all the current git repositories located 
-       					in the app directories.
+       	all		Pulls from all the current git repositories located 
+       			in the app directories.
 
-       	update [url]: 	Updates a specific repository in the project directory
-
-       	update-current: Updates the selected projects
+       	current	Updates the selected projects
 
 PROJECT
 
@@ -67,5 +66,5 @@ PROJECT
 	API 	This directory is for the back end development
 
 URL
-		As of now, the url supports git repositories, but I will be working
-		to support different version control systems. 
+		As of now, the url supports git repositories, but I will be 
+		working to support different version control systems. 
