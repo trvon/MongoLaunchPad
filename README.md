@@ -51,7 +51,8 @@ OPTIONS
 		stop-api:
 		stop-db:
         
-    update
+    update 
+    
 
        	update:			Pulls from all the current git repositories located 
        					in the app directories.

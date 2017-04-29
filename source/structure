@@ -1,0 +1,12 @@
+Deployment Console/
+ + UI-dir/
+ 	+ v1/
+ 	+ ...
+ + API-dir/
+ 	+ v1/
+ + scripts/
+ 	+ setrepo
+ 	+ update
+ 	+ launch
+ 	+ stop
+ + history.txt

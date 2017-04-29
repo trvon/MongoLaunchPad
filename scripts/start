@@ -1,0 +1,95 @@
+#!/bin/bash
+
+UI=$3
+API=$2
+project=$1
+
+# Until we get verfied certifications this will suffice for testing
+# the https connection 
+function genKey {
+    # Checking if openssl is installed
+    which openssl > /dev/null
+    if [ $? -ne 0  ]; then
+        sudo apt-get install openssl
+    fi
+    
+    # Generating certificate and key
+    if [ ! -f certs/mongodb.pem ]; then
+        if [ ! -d certs ]; then
+            mkdir certs
+        fi
+        openssl req -newkey rsa:4G096 -new -x509 -days 60 -nodes -out certs/mongodb-cert.crt -keyout certs/mongodb-cert.key && cd certs
+        cat mongodb-cert.crt mongodb-cert.key > mongodb.pem
+        cd ..
+    fi
+}
+
+# Prepares directory for mongo
+function setup {
+	# Project Directory creation
+    if [ ! -d ui ]; then
+    	mkdir ui 
+    fi
+    if [ ! -d api ]; then 
+    	mkdir api
+    fi
+    # Creates mongo database folder for initalization
+    if [ ! -d db ]; then
+    	mkdir db
+    fi
+
+	# Generates random's for DB
+	# secret="$(tr -d -c '[:alnum:]' </dev/urandom | head -c 36 | base64)"
+	# echo -e "{\n\t\"secret\": \"$secret\"," > app/$name/bin/config.json
+	port=$RANDOM
+	# If secret is generated before, we need to store for creation of 
+	# new file
+	echo 
+	echo -e "{\n\t\"mongoConnection\": \"mongodb://localhost:$port/test?ssl=true\"\n}" > api/$API/bin/config.json
+}
+
+# Mongo Controls
+function startMongo {
+	setup
+	genKey
+    mongod --sslMode requireSSL --sslPEMKeyFile certs/mongodb.pem --dbpath db --port $port --quiet & # --fork --syslog
+}
+
+# Starts everything
+function startAll {
+	# Starts mongodb and forks it to the background
+	startMongo
+	# Will need to create own start script
+	echo -e "\n\nMongo is hosted at\nlocalhost:$port\n\n"
+	cd api/$API && npm install && clear && npm start &
+	exit
+}
+
+# Start the UI
+function startUI {
+	status=$(ps aux | grep -E "[m]ongod" | awk {'print $2'})
+	if [ -z $status ]; then
+		echo "Make sure that mongoDB is running first"
+	else
+		echo "hey this needs to be implemented"
+	fi
+}
+
+# Use Api start script in future
+function startApi {
+	status=$(ps aux | grep -E "[m]ongod" | awk {'print $2'})
+	if [ -z $status ]; then
+		echo "Make sure that mongoDB is running first"
+	else
+		cd $project/$name && npm install && npm start
+	fi
+}
+
+case $project in 
+	"all") startAll ;;
+	"api") startApi ;;
+	"ui" ) startUI ;;
+	"db" ) startMongo ;;
+	*) echo -e "Sorry, I don't know what you need to be done. Correct options are as follows:"\
+				"\n\ndeploy start all\ndeploy start api\ndeploy start ui\ndeploy start db"
+esac

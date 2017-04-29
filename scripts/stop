@@ -1,0 +1,45 @@
+#!/bin/bash
+
+option=$1
+
+function stopAll {
+	status=$(ps aux | grep -E "[m]ongod|[n]pm|[n]ode" | awk {'print $2'})
+	if [ -z $status ]; then
+		echo "No process is currently running!"
+		exit
+	fi
+	ps aux | grep -E "[m]ongod|[d]eploy|[n]pm|[n]ode" | awk {'print $2'} | xargs kill
+	# mongod --dbpath db --shutdown
+}
+
+function node {
+	status=$(ps aux | grep -E "[n]ode" | awk {'print $2'})
+	if [ -z $status ]; then
+		echo "No node process running!"
+		exit
+	fi
+	ps aux | grep -E "[n]pm|[n]ode" | awk {'print $2'} | xargs kill
+}
+
+function stopMongo {
+	status=$(ps aux | grep -E "[m]ongod" | awk {'print $2'})
+	if [ -z $status ] ; then
+		echo "No MongoDB process runnning!"
+		exit
+	fi
+	echo -e "Are you sure? [Y/n]"
+	read prompt
+	if [ ! $prompt == 'n' ]; then
+		ps aux | grep -E "[m]ongod" | awk {'print $2'} | xargs kill
+	fi
+	exit
+	# mongod --dbpath db --shutdown
+}
+
+case $option in 
+	"all") stopAll ;;
+	"api") node ;;
+	"db") stopMongo ;;
+	*) echo -e "Sorry, I don't know what you need to be done. Correct options are as follows:"\
+				"\ndeploy stop all\ndeploy stop api\ndeploy stop db\n\ndeploy stop ui"
+esac

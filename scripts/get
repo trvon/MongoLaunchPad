@@ -1,0 +1,15 @@
+#!/bin/bash
+
+function getApi {
+	clear
+ 	if [ -d app/$project/$name ]; then
+ 		echo "Are you sure you want to overrite this API? ( y | n)"
+ 		read y
+ 		if [ "${y,,}" == 'y' ]; then
+ 			rm -fr app/$project/$name && git clone $url app/$project/$name --quiet
+ 		fi
+ 	else
+ 		git clone $url app/$project/$name --quiet
+ 	fi
+	exit
+}

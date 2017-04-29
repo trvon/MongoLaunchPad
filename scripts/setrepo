@@ -1,0 +1,55 @@
+#!/bin/bash
+
+project=$1
+name=$2
+status=$(ls $project)
+
+# Setting API for use
+function setApi {
+	if [ ! -d $project/$name ]; then
+		echo "No API project has been installed with that name"
+		if [ -z status ]; then 
+			echo "Make sure you have cloned a project"
+		else
+			echo -e "Current options include:"
+			ls $project
+			exit
+		fi
+	fi
+
+	echo "API: $name" > history
+	if [ -z $currentUI ]; then
+		echo -e "Make sure you set the current UI"
+	else 
+		echo $currentUI >> history
+	fi
+	exit
+}
+
+function setUi {
+	if [ ! -d ../$project/$name ]; then
+		echo "No UI project has been installed with that name"
+		if [ -z status ]; then 
+			echo "Make sure you have cloned a project"
+		else
+			echo -e "Current options include:\n"
+			cd ../$project && ls
+			exit
+		fi
+	fi
+
+	echo "UI: $name" > history
+	if [ -z $currentAPI ]; then
+		echo "Make sure you set the current API"
+	else
+	echo $currentAPI >> history	
+	fi
+	exit
+}
+
+case $project in 
+	"api") setApi ;;
+	"ui") setUi ;; 
+	*) echo -e "Sorry, I don't know what you need to be done. Correct options are as follows:"\
+				"\n\ndeploy set api\ndeploy set ui"
+esac

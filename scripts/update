@@ -1,0 +1,22 @@
+#!/bin/bash
+
+project=$1
+name=$2
+
+# Updating one or all repositories
+function update {
+	if [ !-z $name ]; then
+		echo -e "Updating $name"
+    	cd app/$project/$name
+    	git pull --quiet			
+
+    else
+    	echo -e "You are updating all $project repo's :)\n"
+		for i in app/$project/* ; do
+			git pull app/$project/$i --quiet
+			cd ..
+    	done
+    fi
+    echo "finished"
+    exit
+}
