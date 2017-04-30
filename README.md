@@ -30,11 +30,11 @@ DESCRIPTION
 
 OPTIONS
 
-	get			downloads a git repository into the app folder in side 
-				of the specified project directory. 
+	get		downloads a git repository into the app folder in side 
+			of the specified project directory. 
 
 	setrepo		Depending on project specified, the user sets the project
-				directory that they wold like to launch from. 
+			directory that they wold like to launch from. 
 
 	start [option]
 
@@ -46,8 +46,8 @@ OPTIONS
 	stop [option]
 
 		all: 	Stops the  database and node server. Make sure you 
-				want to do this because the port is going to be 
-				randommized when started again
+			want to do this because the port is going to be 
+			randommized when started again
 		ui:
 		api:
 		db:
@@ -62,7 +62,7 @@ OPTIONS
 
 PROJECT
 
-	UI 		This directory is for the front end development.
+	UI 	This directory is for the front end development.
 	API 	This directory is for the back end development
 
 URL
