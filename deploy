@@ -5,6 +5,7 @@ url=$2
 name="${3##*/}"
 project="${2,,}"
 option="${1,,}"
+export MONGO=$(find ~/ -name MongoLaunchPad)
 
 # For Storing previous cases
 # making sure file is created
@@ -19,10 +20,11 @@ currentUI=$(cat history | grep UI)
 currentAPI=$(cat history | grep API)
 
 case $option in
-	"start") ./scripts/start $project $UI $API;;
-	"setrepo") ./scripts/setrepo $project $name ;;
-	"stop") ./scripts/stop $project ;;
-    "update") ./scripts/update $project $name ;;
-    *) echo -e "Sorry that is not an option, please refer to the man page\n'man deploy'"
+	"start") sh $MONGO/scripts/start $project $UI $API;;
+	"setrepo") sh $MONGO/scripts/setrepo $project $name ;;
+	"stop") sh $MONGO/scripts/stop $project ;;
+    "update") sh $MONGO/scripts/update $project $name ;;
+	"--help") less $MONGO/README.md ;;
+    *) echo -e "Sorry that is not an option, please type deploy --help for assistance"
 esac
 

@@ -6,10 +6,10 @@ function getApi {
  		echo "Are you sure you want to overrite this API? ( y | n)"
  		read y
  		if [ "${y,,}" == 'y' ]; then
- 			rm -fr app/$project/$name && git clone $url app/$project/$name --quiet
+ 			rm -fr $MONGO/app/$project/$name && git clone $url $MONGO/app/$project/$name --quiet
  		fi
  	else
- 		git clone $url app/$project/$name --quiet
+ 		git clone $url $MONGO/app/$project/$name --quiet
  	fi
 	exit
 }
