@@ -14,11 +14,11 @@ function genKey {
     fi
     
     # Generating certificate and key
-    if [ ! -f certs/mongodb.pem ]; then
-        if [ ! -d certs ]; then
-            mkdir certs
+    if [ ! -f $MONGO/mongodb.pem ]; then
+        if [ ! -d $MONGO/certs ]; then
+            mkdir $MONGO/certs
         fi
-        openssl req -newkey rsa:4G096 -new -x509 -days 60 -nodes -out certs/mongodb-cert.crt -keyout certs/mongodb-cert.key && cd certs
+        openssl req -newkey rsa:4096 -new -x509 -days 60 -nodes -out $MONGO/certs/mongodb-cert.crt -keyout $MONGO/certs/mongodb-cert.key && cd $MONGO/certs
         cat mongodb-cert.crt mongodb-cert.key > mongodb.pem
         cd ..
     fi
@@ -52,7 +52,7 @@ function setup {
 function startMongo {
 	setup
 	genKey
-    mongod --sslMode requireSSL --sslPEMKeyFile certs/mongodb.pem --dbpath db --port $port --quiet & # --fork --syslog
+    mongod --sslMode requireSSL --sslPEMKeyFile $MONGO/certs/mongodb.pem --dbpath db --port $port --quiet & # --fork --syslog
 }
 
 # Starts everything
@@ -61,7 +61,7 @@ function startAll {
 	startMongo
 	# Will need to create own start script
 	echo -e "\n\nMongo is hosted at\nlocalhost:$port\n\n"
-	cd api/$API && npm install && clear && npm start &
+	cd $MONGO/api/$API && npm install && clear && npm start &
 	exit
 }
 

@@ -4,6 +4,11 @@ project=$1
 name=$2
 status=$(ls $project)
 
+if [ -z $name ]; then
+	echo "Please provide the name of the repo you would like to set"
+	exit
+fi
+
 # Setting API for use
 function setApi {
 	if [ ! -d $project/$name ]; then

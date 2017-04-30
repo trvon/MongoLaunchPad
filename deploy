@@ -9,18 +9,32 @@ export MONGO=$(find ~/ -name MongoLaunchPad)
 
 # For Storing previous cases
 # making sure file is created
-
 UI=$(cat history | grep UI | sed 's/UI: //')
 API=$(cat history | grep API | sed 's/API: //')
 
 currentUI=$(cat history | grep UI)
 currentAPI=$(cat history | grep API)
 
+# Automating the path
+shell="$(echo $SHELL | sed 's/\/bin//')"
+status=$(cat ~/.zshrc | grep MongoLaunchPad)
+
+if [[ $shell =~ "zsh" ]]; then
+	if [[ -z $status ]]; then
+		pwd | xargs -I {} echo "PATH=$PATH:{}" >> ~/.zshrc && source ~/.zshrc
+	fi
+else
+	if [[ -z $status ]]; then
+		pwd | xargs -I {} echo "PATH=$PATH:{}" >> ~/.bashrc && source ~/.bashrc
+	fi
+fi
+
 case $option in
 	"start") sh $MONGO/scripts/start $project $UI $API;;
 	"setrepo") sh $MONGO/scripts/setrepo $project $name ;;
 	"stop") sh $MONGO/scripts/stop $project ;;
     "update") sh $MONGO/scripts/update $project $name ;;
+	"get" ) sh $MONGO/scripts/get $project $url ;;
 	"--help") less $MONGO/README.md ;;
     *) echo -e "Sorry that is not an option, please type deploy --help for assistance"
 esac

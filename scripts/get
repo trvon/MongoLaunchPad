@@ -1,15 +1,26 @@
 #!/bin/bash
 
+project=$2
+url=$2
+
 function getApi {
 	clear
  	if [ -d app/$project/$name ]; then
- 		echo "Are you sure you want to overrite this API? ( y | n)"
+ 		echo "Are you sure you want to overrite this API? [Y/n]"
  		read y
- 		if [ "${y,,}" == 'y' ]; then
+ 		if [ ! "${y,,}" == 'n' ]; then
  			rm -fr $MONGO/app/$project/$name && git clone $url $MONGO/app/$project/$name --quiet
  		fi
+ 		exit
  	else
  		git clone $url $MONGO/app/$project/$name --quiet
  	fi
 	exit
 }
+
+case $project in 
+	"api") getApi ;;
+	"ui") getUI ;; 
+	*) echo -e "Sorry, I don't know what you need to be done. Correct options are as follows:"\
+				"\ndeploy get api [url]\ndeploy get ui [url]"
+esac
