@@ -9,9 +9,6 @@ export MONGO=$(find ~/ -name MongoLaunchPad)
 
 # For Storing previous cases
 # making sure file is created
-if [ ! -f history ]; then 
-	touch history
-fi
 
 UI=$(cat history | grep UI | sed 's/UI: //')
 API=$(cat history | grep API | sed 's/API: //')
