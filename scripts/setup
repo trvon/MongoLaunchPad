@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [[ $shell =~ "zsh" ]]; then
+	status=$(cat ~/.zshrc | grep MongoLaunchPad)
+	if [[ -z $status ]]; then
+		pwd | xargs -I {} echo "PATH=$PATH:{}" >> ~/.zshrc
+		echo "export MONGO=$(find ~/ -iname MongoLaunchPad)" >> ~/.zshrc && source ~/.zshrc
+	fi
+else
+	status=$(cat ~/.bashrc | grep MongoLaunchPad)
+	if [[ -z $status ]]; then
+		pwd | xargs -I {} echo "PATH=$PATH:{}" >> ~/.bashrc
+		echo "export MONGO=$(find ~/ -iname MongoLaunchPad)" >> ~/.bashrc && source ~/.bashrc
+	fi
+fi

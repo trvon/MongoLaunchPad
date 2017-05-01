@@ -1,5 +1,10 @@
 LaunchPad
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+To use script globally on your system, clone the repository and run the setup
+script located within the script directory.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 *Disclaimer*
 Some commands may or may not work until everything is sufficently tested
 

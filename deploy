@@ -5,7 +5,7 @@ url=$2
 name="${3##*/}"
 project="${2,,}"
 option="${1,,}"
-export MONGO=$(find ~/ -name MongoLaunchPad)
+
 
 # For Storing previous cases
 # making sure file is created
