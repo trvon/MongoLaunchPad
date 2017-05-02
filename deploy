@@ -17,10 +17,6 @@ if [ -f history ]; then
     currentAPI=$(cat history | grep API)
 fi
 
-# Automating the path
-shell="$(echo $SHELL | sed 's/\/bin//')"
-status=$(cat ~/.zshrc | grep MongoLaunchPad)
-
 case $option in
 	"start") sh $MONGO/scripts/start $project $UI $API;;
 	"setrepo") sh $MONGO/scripts/setrepo $project $name ;;

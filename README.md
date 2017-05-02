@@ -1,3 +1,6 @@
+*Disclaimer*
+Some commands may or may not work until everything is sufficently tested
+
 LaunchPad
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -5,20 +8,15 @@ To use script globally, clone the repository and run the setup script
 - Project will be located inside the cloned repo in either UI or API
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*Disclaimer*
-Some commands may or may not work until everything is sufficently tested
-
-NAME"
-
-		A deployment console for mongoDB and node projects
+A deployment console for mongoDB and node projects
 
 
-SYNOPSIS
+Synopsis:	
 
 		deploy [option] [project] [URL]
 
 
-DESCRIPTION
+Description
 
 		Disclaimer - This script is tested on Linux Platforms and utitlizes
 		bash.
@@ -33,7 +31,7 @@ DESCRIPTION
 		time. After the first launch the target directory should contain an app
 		folder and an data/db folder path
 
-OPTIONS
+Options
 
 	get		downloads a git repository into the app folder in side 
 			of the specified project directory. 
@@ -60,16 +58,17 @@ OPTIONS
     update [option]
     
 
-       	all		Pulls from all the current git repositories located 
-       			in the app directories.
+       	all	Pulls from all the current git repositories located 
+       		in the app directories.
 
-       	current	Updates the selected projects
+       	current Updates the selected projects
 
-PROJECT
+Project
 
 	UI 	This directory is for the front end development.
 	API 	This directory is for the back end development
 
-URL
-		As of now, the url supports git repositories, but I will be 
-		working to support different version control systems. 
+Url
+
+	As of now, the url supports git repositories, but I will be 
+	working to support different version control systems. 
