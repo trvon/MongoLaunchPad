@@ -1,8 +1,8 @@
 LaunchPad
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-To use script globally on your system, clone the repository and run the setup
-script located within the script directory.
+To use script globally, clone the repository and run the setup script
+- Project will be located inside the cloned repo in either UI or API
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 *Disclaimer*
