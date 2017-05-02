@@ -5,13 +5,13 @@ name=$2
 status=$(ls $project)
 
 if [ -z $name ]; then
-	echo "Please provide the name of the repo you would like to set"
+	echo "You did not set a repo for starting"
 	exit
 fi
 
 # Setting API for use
 function setApi {
-	if [ ! -d $project/$name ]; then
+	if [ ! -d $MONGO/$project/$name ]; then
 		echo "No API project has been installed with that name"
 		if [ -z status ]; then 
 			echo "Make sure you have cloned a project"
@@ -22,17 +22,17 @@ function setApi {
 		fi
 	fi
 
-	echo "API: $name" > history
+	echo "API: $name" > $MONGO/source/history
 	if [ -z $currentUI ]; then
 		echo -e "Make sure you set the current UI"
 	else 
-		echo $currentUI >> history
+		echo $currentUI >> $MONGO/source/history
 	fi
 	exit
 }
 
 function setUi {
-	if [ ! -d ../$project/$name ]; then
+	if [ ! -d $MONGO/$project/$name ]; then
 		echo "No UI project has been installed with that name"
 		if [ -z status ]; then 
 			echo "Make sure you have cloned a project"
@@ -43,11 +43,11 @@ function setUi {
 		fi
 	fi
 
-	echo "UI: $name" > history
+	echo "UI: $name" > $MONGO/source/history
 	if [ -z $currentAPI ]; then
 		echo "Make sure you set the current API"
 	else
-	echo $currentAPI >> history	
+	echo $currentAPI >> $MONGO/source/history	
 	fi
 	exit
 }
@@ -56,5 +56,5 @@ case $project in
 	"api") setApi ;;
 	"ui") setUi ;; 
 	*) echo -e "Sorry, I don't know what you need to be done. Correct options are as follows:"\
-				"\n\ndeploy set api\ndeploy set ui"
+				"\n- deploy set [api]\n- deploy set [ui]"
 esac

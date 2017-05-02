@@ -14,7 +14,7 @@ function genKey {
     fi
     
     # Generating certificate and key
-    if [ ! -f $MONGO/mongodb.pem ]; then
+    if [ ! -f $MONGO/certs/mongodb.pem ]; then
         if [ ! -d $MONGO/certs ]; then
             mkdir $MONGO/certs
         fi
@@ -27,15 +27,15 @@ function genKey {
 # Prepares directory for mongo
 function setup {
 	# Project Directory creation
-    if [ ! -d ui ]; then
-    	mkdir ui 
+    if [ ! -d $MONGO/ui ]; then
+    	mkdir $MONGO/ui 
     fi
-    if [ ! -d api ]; then 
-    	mkdir api
+    if [ ! -d $MONGO/api ]; then 
+    	mkdir $MONGO/api
     fi
     # Creates mongo database folder for initalization
-    if [ ! -d db ]; then
-    	mkdir db
+    if [ ! -d $MONGO/db ]; then
+    	mkdir $MONGO/db
     fi
 
 	# Generates random's for DB
@@ -45,7 +45,7 @@ function setup {
 	# If secret is generated before, we need to store for creation of 
 	# new file
 	echo 
-	echo -e "{\n\t\"mongoConnection\": \"mongodb://localhost:$port/test?ssl=true\"\n}" > api/$API/bin/config.json
+	echo -e "{\n\t\"mongoConnection\": \"mongodb://localhost:$port/test?ssl=true\"\n}" > $MONGO/api/$API/bin/config.json
 }
 
 # Mongo Controls
@@ -81,7 +81,7 @@ function startApi {
 	if [ -z $status ]; then
 		echo "Make sure that mongoDB is running first"
 	else
-		cd $project/$name && npm install && npm start
+		cd $MONGO/$project/$name && npm install && npm start
 	fi
 }
 
@@ -91,5 +91,5 @@ case $project in
 	"ui" ) startUI ;;
 	"db" ) startMongo ;;
 	*) echo -e "Sorry, I don't know what you need to be done. Correct options are as follows:"\
-				"\n\ndeploy start all\ndeploy start api\ndeploy start ui\ndeploy start db"
+				"\n- deploy start [all]\n- deploy start [api]\n- deploy start [ui]\n- deploy start [db]"
 esac

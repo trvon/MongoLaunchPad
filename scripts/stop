@@ -41,5 +41,5 @@ case $option in
 	"api") node ;;
 	"db") stopMongo ;;
 	*) echo -e "Sorry, I don't know what you need to be done. Correct options are as follows:"\
-				"\ndeploy stop all\ndeploy stop api\ndeploy stop db\ndeploy stop ui"
+				"\n- deploy stop [all]\n- deploy stop [api]\n- deploy stop [db]\n- deploy stop [ui]"
 esac

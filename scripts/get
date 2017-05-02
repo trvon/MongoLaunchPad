@@ -22,5 +22,5 @@ case $project in
 	"api") getApi ;;
 	"ui") gqetUI ;; 
 	*) echo -e "Sorry, I don't know what you need to be done. Correct options are as follows:"\
-				"\ndeploy get api [url]\ndeploy get ui [url]"
+				"\n- deploy get api [url]\n- deploy get ui [url]"
 esac

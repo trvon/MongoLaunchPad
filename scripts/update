@@ -5,14 +5,14 @@ name=$2
 
 # Updating one or all repositories
 function update {
-	if [ !-z $name ]; then
+	if [ !-z $name && $project ]; then
 		echo -e "Updating $name"
-    	cd app/$project/$name
+    	cd $MONGO/$project/$name
     	git pull --quiet			
 
     else
     	echo -e "You are updating all $project repo's :)\n"
-		for i in app/$project/* ; do
+		for i in $MONGO/$project/* ; do
 			git pull app/$project/$i --quiet
 			cd ..
     	done
@@ -20,3 +20,5 @@ function update {
     echo "finished"
     exit
 }
+
+update

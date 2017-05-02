@@ -8,13 +8,18 @@ option="${1,,}"
 
 
 # For Storing previous cases
-# making sure file is created
-if [ -f history ]; then
-    UI=$(cat history | grep UI | sed 's/UI: //')
-    API=$(cat history | grep API | sed 's/API: //')
+status=$(cat $MONGO/source/history | grep API)
 
-    currentUI=$(cat history | grep UI)
-    currentAPI=$(cat history | grep API)
+if [[ -z $status ]] ; then 
+    echo "Make you you set an API"
+fi
+
+# making sure file is created
+if [ -f $MONGO/source/history ]; then
+    UI=$(cat $MONGO/source/history | grep UI | sed 's/UI: //')
+    API=$(cat $MONGO/source/history | grep API | sed 's/API: //')
+    currentUI=$(cat $MONGO/source/history | grep UI)
+    currentAPI=$(cat $MONGO/source/history | grep API)
 fi
 
 case $option in
