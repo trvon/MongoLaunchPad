@@ -11,7 +11,9 @@ script located within the script directory.
 A deployment console for mongoDB and node projects
 
 
-Synopsis:	deploy [option] [project] [URL]
+Synopsis:	
+
+		deploy [option] [project] [URL]
 
 
 Description
@@ -67,5 +69,6 @@ Project
 	API 	This directory is for the back end development
 
 Url
+
 	As of now, the url supports git repositories, but I will be 
 	working to support different version control systems. 
