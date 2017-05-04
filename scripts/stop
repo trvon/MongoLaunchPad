@@ -4,7 +4,7 @@ option=$1
 
 function stopAll {
 	status=$(ps aux | grep -E "[m]ongod|[n]pm|[n]ode" | awk {'print $2'})
-	if [ -z $status ]; then
+	if [[ -z $status ]]; then
 		echo "No process is currently running!"
 		exit
 	fi
@@ -14,7 +14,7 @@ function stopAll {
 
 function node {
 	status=$(ps aux | grep -E "[n]ode" | awk {'print $2'})
-	if [ -z $status ]; then
+	if [[ -z $status ]]; then
 		echo "No node process running!"
 		exit
 	fi
@@ -23,7 +23,7 @@ function node {
 
 function stopMongo {
 	status=$(ps aux | grep -E "[m]ongod" | awk {'print $2'})
-	if [ -z $status ] ; then
+	if [[ -z $status ]] ; then
 		echo "No MongoDB process runnning!"
 		exit
 	fi

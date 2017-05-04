@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash`
 
 UI=$3
 API=$2
@@ -6,10 +6,10 @@ project=$1
 
 # Until we get verfied certifications this will suffice for testing
 # the https connection 
-function genKey {
+function generateKey {
     # Checking if openssl is installed
     which openssl > /dev/null
-    if [ $? -ne 0  ]; then
+    if [ $? -ne 0 ]; then
         sudo apt-get install openssl
     fi
     
@@ -20,7 +20,7 @@ function genKey {
         fi
         openssl req -newkey rsa:4096 -new -x509 -days 60 -nodes -out $MONGO/certs/mongodb-cert.crt -keyout $MONGO/certs/mongodb-cert.key && cd $MONGO/certs
         cat mongodb-cert.crt mongodb-cert.key > mongodb.pem
-        cd ..
+        cd ../
     fi
 }
 
@@ -42,16 +42,13 @@ function setup {
 	# secret="$(tr -d -c '[:alnum:]' </dev/urandom | head -c 36 | base64)"
 	# echo -e "{\n\t\"secret\": \"$secret\"," > app/$name/bin/config.json
 	port=$RANDOM
-	# If secret is generated before, we need to store for creation of 
-	# new file
-	echo 
 	echo -e "{\n\t\"mongoConnection\": \"mongodb://localhost:$port/test?ssl=true\"\n}" > $MONGO/api/$API/bin/config.json
 }
 
 # Mongo Controls
 function startMongo {
 	setup
-	genKey
+	generateKey
     mongod --sslMode requireSSL --sslPEMKeyFile $MONGO/certs/mongodb.pem --dbpath db --port $port --quiet & # --fork --syslog
 }
 

@@ -1,15 +1,20 @@
 #!/bin/bash
+shell="$(echo $SHELL | sed 's/\/bin//')"
 
 if [[ $shell =~ "zsh" ]]; then
 	status=$(cat ~/.zshrc | grep MongoLaunchPad)
 	if [[ -z $status ]]; then
+		echo "# MongoLaunchPad Settings" >> ~/.zshrc
 		pwd | xargs -I {} echo "PATH=$PATH:{}" >> ~/.zshrc
 		echo "export MONGO=$(find ~/ -iname MongoLaunchPad)" >> ~/.zshrc && source ~/.zshrc
 	fi
 else
 	status=$(cat ~/.bashrc | grep MongoLaunchPad)
 	if [[ -z $status ]]; then
+		echo "# MongoLaunchPad Settings" >> ~/.bashrc
 		pwd | xargs -I {} echo "PATH=$PATH:{}" >> ~/.bashrc
 		echo "export MONGO=$(find ~/ -iname MongoLaunchPad)" >> ~/.bashrc && source ~/.bashrc
 	fi
 fi
+
+echo "Enjoy"
