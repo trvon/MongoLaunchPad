@@ -1,3 +1,7 @@
+Ubuntu Systems
+	Since ubuntu uses dash default, an easy fix requires this simple line of code:
+	- sudo rm /bin/sh && sudo ln -s /bin/bash /bin/sh
+
 *Disclaimer*
 Some commands may or may not work until everything is sufficently tested
 
