@@ -1,8 +1,11 @@
 Ubuntu Systems
-	Since ubuntu uses dash default, an easy fix requires this simple line of code:
-	- sudo rm /bin/sh && sudo ln -s /bin/bash /bin/sh
+
+Since ubuntu uses dash default, an easy fix requires this simple line of code:
+	
+	sudo rm /bin/sh && sudo ln -s /bin/bash /bin/sh
 
 *Disclaimer*
+
 Some commands may or may not work until everything is sufficently tested
 
 LaunchPad
@@ -52,7 +55,7 @@ Options
 
 	stop [option]
 
-		all: 	Stops the  database and node server. Make sure you 
+		all:	Stops the  database and node server. Make sure you 
 			want to do this because the port is going to be 
 			randommized when started again
 		ui:
@@ -61,11 +64,8 @@ Options
         
     update [option]
     
-
        	all	Pulls from all the current git repositories located 
        		in the app directories.
-
-       	current Updates the selected projects
 
 Project
 
