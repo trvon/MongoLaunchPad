@@ -1,22 +1,18 @@
-Ubuntu Systems
-
-Since ubuntu uses dash default, an easy fix requires this simple line of code:
-	
-	sudo rm /bin/sh && sudo ln -s /bin/bash /bin/sh
-
-*Disclaimer*
-
-Some commands may or may not work until everything is sufficently tested
-
-LaunchPad
+A deployment console for mongoDB and node projects
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 To use script globally, clone the repository and run the setup script
-- Project will be located inside the cloned repo in either UI or API
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A deployment console for mongoDB and node projects
+*Disclaimer*
 
+	- This script is tested on Linux Platforms and utitlizes bash.
+		
+	- Some commands may or may not work until everything is sufficently tested
+
+	- Ubuntu Systems
+		Since ubuntu uses dash default, an easy fix requires this simple line of code:
+		sudo rm /bin/sh && sudo ln -s /bin/bash /bin/sh
 
 Synopsis:	
 
@@ -24,9 +20,6 @@ Synopsis:
 
 
 Description
-
-		Disclaimer - This script is tested on Linux Platforms and utitlizes
-		bash.
 
 		This script randomizes the port app/$foobar/bin folder, 
 		which hosts the application. Users can download multiple API's and
