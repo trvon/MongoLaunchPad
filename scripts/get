@@ -21,6 +21,6 @@ function getApi {
 case $project in 
 	"api") getApi ;;
 	"ui") gqetUI ;; 
-	*) echo -e "Sorry, I don't know what you need to be done. Correct options are as follows:"\
-				"\n- deploy get api [url]\n- deploy get ui [url]"
+	*) echo -e "\n Sorry, I do not know what you needs to be done.\n Correct options are as follows:"\
+				"\n\t- deploy get api [url]\n\t- deploy get ui [url]\n"
 esac

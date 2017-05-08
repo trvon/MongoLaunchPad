@@ -40,6 +40,6 @@ case $option in
 	"all") stopAll ;;
 	"api") node ;;
 	"db") stopMongo ;;
-	*) echo -e "Sorry, I don't know what you need to be done. Correct options are as follows:"\
-				"\n- deploy stop [all]\n- deploy stop [api]\n- deploy stop [db]\n- deploy stop [ui]"
+	*) echo -e "\n Sorry, I do not know what you needs to be done.\n Correct options are as follows:"\
+				"\n\t- deploy stop [all]\n\t- deploy stop [api]\n\t- deploy stop [db]\n\t- deploy stop [ui]\n"
 esac

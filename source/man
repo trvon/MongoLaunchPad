@@ -1,0 +1,38 @@
+DEPLOY(1)                        MongoLaunchPad                        DEPLOY(1)
+
+NAME
+       deploy - Automated npm project launch with mongodb dependency
+
+SYNOPSIS
+       deploy [option] [project] [name]
+       - deploy setrepo [name]
+       - deploy start [option]
+       - deploy stop [option]
+       - deploy update [option]
+       - deploy get [url]
+
+DESCRIPTION
+		This script randomizes the port app/$foobar/bin folder, 
+		which hosts the application. Users can download multiple API's and
+		launch them with the (get) command or use current downloaded API's with
+		the (start) command.
+
+		The path's are relative, so it is advised to launch the deploy command
+		within the top directory, especially after launching it for the first
+		time. After the first launch the target directory should contain an app
+		folder and an data/db folder path
+
+
+OVERVIEW
+
+
+OPTIONS
+
+
+   General options
+
+
+ENVIRONMENT
+
+
+0.0.1                             2017-05-07                            DEPLOY(1)

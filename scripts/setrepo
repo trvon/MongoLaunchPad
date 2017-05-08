@@ -55,6 +55,6 @@ function setUi {
 case $project in 
 	"api") setApi ;;
 	"ui") setUi ;; 
-	*) echo -e "Sorry, I don't know what you need to be done. Correct options are as follows:"\
-				"\n- deploy set [api]\n- deploy set [ui]"
+	*) echo -e "\n Sorry, I don't know what you need to be done.\n Correct options are as follows:"\
+				"\n\t- deploy set [api]\n\t- deploy set [ui]"
 esac

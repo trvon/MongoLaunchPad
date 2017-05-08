@@ -7,15 +7,28 @@ if [[ $shell =~ "zsh" ]]; then
 		echo -e "\n# MongoLaunchPad Settings" >> ~/.zshrc
 		pwd | xargs -I {} echo "PATH=$PATH:{}" >> ~/.zshrc
         s=$(find ~/ -name MongoLaunchPad) 
-        echo "export MONGO=$s" >> ~/.zshrc && source ~/.zshrc
+        echo "export MONGO=$s" >> ~/.zshrc
 	fi
+# Default case is bash
 else
 	status=$(cat ~/.bashrc | grep MongoLaunchPad)
 	if [[ -z $status ]]; then
 		echo -e "\n# MongoLaunchPad Settings" >> ~/.bashrc
 		pwd | xargs -I {} echo "PATH=$PATH:{}" >> ~/.bashrc
         s=$(find ~/ -name MongoLaunchPad) 
-        echo "export MONGO=$s" >> ~/.bashrc && source ~/.bashrc
+        echo "export MONGO=$s" >> ~/.bashrc
 	fi
 fi
-echo "Enjoy"
+
+echo -e "\n\tWelcome to ACM's Deployment console to get started"\
+		"\n\trefer to either [deploy --help] or some examples below"\
+		"\n\tto get you started. Email me or open an issue on github"\
+		"\n\tif you have an problems."\
+		"\n\n\t\tdeploy get"\
+		"\n\t\tdeploy start"\
+		"\n\t\tdeploy stop"\
+		"\n\t\tdeploy setrepo"\
+		"\n\n\tEmail: trvon@tuta.io \n\tGithub: https://github.com/trvon/MongoLaunchPad"\
+		"\n\n\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"\
+		"\n\tPlease source your terminals resource file:\n\t\tex. source ~/.bashrc or source ~/.zshrc"\
+		"\n\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"\

@@ -28,7 +28,6 @@ case $option in
 	"stop") sh $MONGO/scripts/stop $project ;;
     "update") sh $MONGO/scripts/update $project $name ;;
 	"get" ) sh $MONGO/scripts/get $project $url ;;
-	"--help") less $MONGO/README.md ;;
-    *) echo -e "Sorry that is not an option, please type deploy --help for assistance"
+	"--help") less $MONGO/source/man ;;
+    *) echo -e "\n Sorry that is not an option, please type deploy --help for assistance\n"
 esac
-

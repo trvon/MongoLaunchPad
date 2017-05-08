@@ -17,7 +17,6 @@ function update {
 			cd ..
     	done
     fi
-    echo "finished"
     exit
 }
 
