@@ -21,14 +21,14 @@ else
 fi
 
 echo -e "\n\tWelcome to ACM's Deployment console to get started"\
-		"\n\trefer to either [deploy --help] or some examples below"\
-		"\n\tto get you started. Email me or open an issue on github"\
-		"\n\tif you have an problems."\
+		"\n\trefer to either [deploy --help] or some examples below."\
+		"\n\tEmail me or open an issue on github if you have any"\
+		"\n\tproblems."\
 		"\n\n\t\tdeploy get"\
 		"\n\t\tdeploy start"\
 		"\n\t\tdeploy stop"\
 		"\n\t\tdeploy setrepo"\
-		"\n\n\tEmail: trvon@tuta.io \n\tGithub: https://github.com/trvon/MongoLaunchPad"\
+		"\n\n\tEmail: twill245@uncc.edu \n\tGithub: https://github.com/trvon/MongoLaunchPad"\
 		"\n\n\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"\
 		"\n\tPlease source your terminals resource file:\n\t\tex. source ~/.bashrc or source ~/.zshrc"\
 		"\n\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"\
